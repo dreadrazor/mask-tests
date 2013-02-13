@@ -136,11 +136,11 @@ TweenMax.MaskTo = function(element, time, animation){
 	
 	//check for x, y animations
 	if(typeof animation.css.x != "undefined"){
-		animation.css["background-position-x"] = (parseInt(animation.css.x) > 0 ? "+" : "-")+"="+Math.abs(parseInt(animation.css.x));
+		animation.css["background-position-x"] = (parseInt(animation.css.x) > 0 ? "-" : "+")+"="+Math.abs(parseInt(animation.css.x));
 	}
 	
 	if(typeof animation.css.y != "undefined"){
-		animation.css["background-position-y"] = (parseInt(animation.css.y) > 0 ? "+" : "-")+"="+Math.abs(parseInt(animation.css.y));
+		animation.css["background-position-y"] = (parseInt(animation.css.y) > 0 ? "-" : "+")+"="+Math.abs(parseInt(animation.css.y));
 	}
 
 	console.log(animation);
