@@ -50,7 +50,6 @@ var Maskable = function(name, element1, color){ //cover element1 with element2
 			element2.css("top","0px");
 			element2.css("left","0px");
 			element2.css("z-index",2);
-			element2.css("opacity", 0.5);
 			element2.appendTo($('#'+ this.name));
 			
 			element1.load(function(event){ //need to listen and resize
@@ -93,6 +92,7 @@ Maskable.prototype.addMask = function(element){
 			var zindex = element.css("z-index");
 			element.css("z-index", "intial");
 			
+			element.parent().css("overflow", "hidden");
 			element.parent().css("right", right);
 			element.parent().css("left", left);
 			element.parent().css("top", top);
@@ -113,13 +113,14 @@ Maskable.prototype.addMask = function(element){
 			//determine offset of each individual mask parent based on where it is
 			element.load(function(event){ //need to listen and resize
 				
-				var pos = $(element.parent()).position();
-				$(element.parent()).css("background-position-x", (-pos.left)+"px");
-				$(element.parent()).css("background-position-y", (-pos.top)+"px");
-				
 				//fit parent
 				element.parent().css("height", element.height()+"px");
 				element.parent().css("width", element.width()+"px");
+				
+				//get position
+				var pos = $(element.parent()).position();
+				$(element.parent()).css("background-position-x", (-pos.left)+"px");
+				$(element.parent()).css("background-position-y", (-pos.top)+"px");
 				
 			});
 			
@@ -142,10 +143,13 @@ TweenMax.MaskTo = function(element, time, animation){
 	if(typeof animation.css.y != "undefined"){
 		animation.css["background-position-y"] = (parseInt(animation.css.y) > 0 ? "-" : "+")+"="+Math.abs(parseInt(animation.css.y));
 	}
+	
+	//deffer until ready
+	element.load(function(){
+		//console.log(animation);
+		TweenMax.to(element.parent(), time, animation);	
+	})
 
-	console.log(animation);
-
-	TweenMax.to(element.parent(), time, animation);	
 }
 
 

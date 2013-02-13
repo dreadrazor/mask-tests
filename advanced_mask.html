@@ -34,12 +34,13 @@
 	var mk = null;
 	$(document).ready(function(){
 		
-		mk = new Maskable("test", $("#bottom"), "rgba(100,100,100,50)");
+		mk = new Maskable("test", $("#bottom"), "rgba(180,100,100,0.5)");
 		mk.addMask($('#cc1'));
 		mk.addMask($('#cc2'));
 
-		//TweenMax.MaskTo($('#cc1'), 5, {css:{x: 50}, ease:Power0.easeIn, repeat:-1, yoyo:true});
-		//TweenMax.MaskTo($('#cc2'), 5, {css:{x: -200}, ease:Power0.easeIn, repeat:-1, yoyo:true});	
+		TweenMax.MaskTo($('#cc1'), 5, {css:{x: 50}, ease:Power0.easeIn, repeat:-1, yoyo:true});
+		TweenMax.MaskTo($('#cc2'), 5, {css:{x: -200}, ease:Power0.easeIn, repeat:-1, yoyo:true});	
+		
 		
 	});
 
