@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Backwards compatible masking(Star)</title>
+
+<!-- Creative CSS -->
+<link rel="stylesheet" type="text/css" href="css/star.css">
+
+<!-- Required -->
+<script type="text/javascript" src="js/jquery1-7-2.min.js"></script>
+
+<!-- Base file specific -->
+<script type="text/javascript" src="http://cdn.inskinmedia.com/isfe/resources/js/json2.js"></script>
+<script type="text/javascript" src="http://cdn.inskinmedia.com/isfe/resources/js/easyXDM.min.js"></script>
+<script type="text/javascript" src="js/base-creative.js"></script>
+
+<!-- Greensock specific -->
+<script type="text/javascript" src="js/TweenMax.js"></script>
+<script type="text/javascript" src="js/TimelineLite.min.js"></script>
+<script type="text/javascript" src="js/CSSPlugin.min.js"></script>
+
+</head>
+
+<body>
+	
+<div id="area"></div>
+<div id="transparency"></div>
+<div id="cut">
+	<img src="css/assets/star2.png" id="shape" />
+</div>
+
+</body>
+
+<script>
+	
+	TweenMax.to($('#cut'), 5, {css:{x:900, 'background-position-x': '-=900'}, ease:Power0.easeIn, repeat:-1, yoyo:true});
+	TweenMax.to($('#shape'), 5, {css:{rotation: -360}, ease:Power0.easeIn, repeat:-1, yoyo:true});
+	
+</script>
+
+</html>

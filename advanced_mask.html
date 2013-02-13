@@ -1,0 +1,51 @@
+<!doctype html>
+<head>
+	<meta "charset=utf-8" />
+	<title>Advanced Mask</title>
+	<meta name="author" content="alin.petculescu" />
+
+	<!-- Creative CSS -->
+	<link rel="stylesheet" type="text/css" href="css/advanced_mask.css">
+	
+	<!-- Required -->
+	<script type="text/javascript" src="js/jquery1-7-2.min.js"></script>
+	
+	<!-- Base file specific -->
+	<script type="text/javascript" src="http://cdn.inskinmedia.com/isfe/resources/js/json2.js"></script>
+	<script type="text/javascript" src="http://cdn.inskinmedia.com/isfe/resources/js/easyXDM.min.js"></script>
+	<script type="text/javascript" src="js/base-creative.js"></script>
+	
+	<!-- Greensock specific -->
+	<script type="text/javascript" src="js/TweenMax.js"></script>
+	<script type="text/javascript" src="js/TimelineLite.min.js"></script>
+	<script type="text/javascript" src="js/CSSPlugin.min.js"></script>
+
+	<!-- Masking library -->
+	<script type="text/javascript" src="js/mask.js"></script>
+	
+</head>
+<body>
+	<img id="bottom" src="css/assets/flowers.jpg" />
+	<img id="cc1" src="css/assets/star2.png" />
+	<img id="cc2" src="css/assets/star2.png" />
+	
+	<script>
+	
+	var mk = null;
+	$(document).ready(function(){
+		
+		mk = new Maskable("test", $("#bottom"), "rgba(100,100,100,50)");
+		mk.addMask($('#cc1'));
+		mk.addMask($('#cc2'));
+
+		//TweenMax.MaskTo($('#cc1'), 1, {css:{x: 200, y : 200}, ease:Power0.easeIn, repeat:-1, yoyo:true});
+		//TweenMax.MaskTo($('#cc2'), 5, {css:{x: -200, y : -200}, ease:Power0.easeIn, repeat:-1, yoyo:true});	
+		
+	});
+
+	</script>
+	
+</body>
+
+</html>
+
