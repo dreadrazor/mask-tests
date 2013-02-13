@@ -113,9 +113,15 @@ Maskable.prototype.addMask = function(element){
 			//determine offset of each individual mask parent based on where it is
 			element.load(function(event){ //need to listen and resize
 				
-				//fit parent
-				element.parent().css("height", element.height()+"px");
-				element.parent().css("width", element.width()+"px");
+				var sqrt2 = Math.sqrt(2);
+				
+				//fit parent (has to be divided by sqrt2 to compensate for rotation);
+				element.parent().css("height", (element.height() / 2)+"px");
+				element.parent().css("width", (element.width() / 2)+"px");
+				
+				//tweaking child
+				element.css("left", (-1 * element.width() / (2 * 2))+"px");
+				element.css("top", (-1 * element.height() / (2 * 2))+"px");
 				
 				//get position
 				var pos = $(element.parent()).position();
@@ -136,6 +142,7 @@ Maskable.prototype.addMask = function(element){
 TweenMax.MaskTo = function(element, time, animation){
 	
 	//check for x, y animations
+	//we need to check and flip the signs on background position
 	if(typeof animation.css.x != "undefined"){
 		animation.css["background-position-x"] = (parseInt(animation.css.x) > 0 ? "-" : "+")+"="+Math.abs(parseInt(animation.css.x));
 	}
@@ -144,7 +151,7 @@ TweenMax.MaskTo = function(element, time, animation){
 		animation.css["background-position-y"] = (parseInt(animation.css.y) > 0 ? "-" : "+")+"="+Math.abs(parseInt(animation.css.y));
 	}
 	
-	//deffer until ready
+	//defer until ready
 	element.load(function(){
 		//console.log(animation);
 		TweenMax.to(element.parent(), time, animation);	

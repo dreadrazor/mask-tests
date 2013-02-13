@@ -34,13 +34,15 @@
 	var mk = null;
 	$(document).ready(function(){
 		
-		mk = new Maskable("test", $("#bottom"), "rgba(180,100,100,0.5)");
+		mk = new Maskable("test", $("#bottom"), "rgba(180,100,100,0.51)");
 		mk.addMask($('#cc1'));
 		mk.addMask($('#cc2'));
 
-		TweenMax.MaskTo($('#cc1'), 5, {css:{x: 50}, ease:Power0.easeIn, repeat:-1, yoyo:true});
-		TweenMax.MaskTo($('#cc2'), 5, {css:{x: -200}, ease:Power0.easeIn, repeat:-1, yoyo:true});	
-		
+		TweenMax.to($('#cc1'), 5, {css:{rotation: -360}, ease:Power0.easeIn, repeat:-1, yoyo:true});
+		TweenMax.to($('#cc2'), 5, {css:{skewX: -30, rotation: -360}, ease:Power0.easeIn, repeat:-1, yoyo:true});
+
+		TweenMax.MaskTo($('#cc1'), 5, {css:{x: 550}, ease:Power0.easeIn, repeat:-1, yoyo:true});
+		TweenMax.MaskTo($('#cc2'), 5, {css:{x: -500}, ease:Power0.easeIn, repeat:-1, yoyo:true});	
 		
 	});
 
