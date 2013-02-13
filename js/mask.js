@@ -50,7 +50,7 @@ var Maskable = function(name, element1, color){ //cover element1 with element2
 			element2.css("top","0px");
 			element2.css("left","0px");
 			element2.css("z-index",2);
-			element2.css("opacity", 0.5);
+			//element2.css("opacity", 0.5);
 			element2.appendTo($('#'+ this.name));
 			
 			element1.load(function(event){ //need to listen and resize
@@ -118,7 +118,7 @@ Maskable.prototype.addMask = function(element){
 			
 			//determine offset of each individual mask parent based on where it is
 			//need to fix when aligning with 'right' and 'bottom'
-			var pos = $(element.parent()).position();
+			var pos = $(element.parent()).offset();
 			$(element.parent()).css("background-position-x", (-pos.left)+"px");
 			$(element.parent()).css("background-position-y", (-pos.top)+"px");
 			
